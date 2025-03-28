@@ -3,16 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interaktive Website</title>
-    <link rel="stylesheet" href="style.css">  <!-- Verknüpft die CSS-Datei -->
+    <title>Umfrage des Tages</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Willkommen auf meiner interaktiven Website!</h1>
+    <h1>Umfrage des Tages</h1>
+    
+    <p id="frage">Lade Umfrage...</p>
 
-    <button onclick="zeigeNachricht()">Klick mich!</button>  <!-- Button, der JS-Funktion aufruft -->
+    <div id="antworten"></div>
 
-    <p id="nachricht"></p>  <!-- Hier wird die Nachricht angezeigt -->
+    <button onclick="speichereAntwort()">Abstimmen</button>
 
-    <script src="script.js"></script>  <!-- Verknüpft die JS-Datei -->
+    <p id="ergebnis"></p>
+
+    <a href="admin.html">Admin-Bereich</a>
+
+    <script src="script.js"></script>
 </body>
 </html>
