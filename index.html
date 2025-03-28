@@ -3,22 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Umfrage des Tages</title>
+    <title>Wochenplan für Mahlzeiten</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Umfrage des Tages</h1>
-    
-    <p id="frage">Lade Umfrage...</p>
+    <h1>Mein Wochenplan</h1>
 
-    <div id="antworten"></div>
+    <!-- Admin Login -->
+    <div id="adminLogin">
+        <h2>Admin Login</h2>
+        <input type="password" id="adminCode" placeholder="Admin Code">
+        <button onclick="checkAdminLogin()">Login</button>
+    </div>
 
-    <button onclick="speichereAntwort()">Abstimmen</button>
+    <!-- Admin Bereich - Standardmäßig versteckt -->
+    <div id="adminPanel" style="display:none;">
+        <h2>Admin-Bereich</h2>
+        <table id="wochenplan">
+            <thead>
+                <tr>
+                    <th>Tag</th>
+                    <th>Gericht</th>
+                    <th>Aktualisieren</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Wiederhole das für jeden Wochentag -->
+                <tr>
+                    <td>Montag</td>
+                    <td>
+                        <input type="text" id="essenMontagInput" value="Pizza">
+                    </td>
+                    <td><button onclick="updateGericht('Montag')">Aktualisieren</button></td>
+                </tr>
+                <tr>
+                    <td>Dienstag</td>
+                    <td>
+                        <input type="text" id="essenDienstagInput" value="Pasta">
+                    </td>
+                    <td><button onclick="updateGericht('Dienstag')">Aktualisieren</button></td>
+                </tr>
+                <!-- Weitere Tage hier -->
+            </tbody>
+        </table>
+    </div>
 
-    <p id="ergebnis"></p>
-
-    <a href="admin.html">Admin-Bereich</a>
+    <!-- Haupt-Tabelle -->
+    <table id="wochenplanUser">
+        <thead>
+            <tr>
+                <th>Tag</th>
+                <th>Gericht</th>
+                <th>Ausgewähltes Gericht</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Die Benutzeransicht bleibt gleich wie zuvor -->
+            <tr>
+                <td>Montag</td>
+                <td><span id="essenMontagUser">Pizza</span></td>
+                <td id="auswahlMontag"></td>
+            </tr>
+            <tr>
+                <td>Dienstag</td>
+                <td><span id="essenDienstagUser">Pasta</span></td>
+                <td id="auswahlDienstag"></td>
+            </tr>
+            <!-- Weitere Tage hier -->
+        </tbody>
+    </table>
 
     <script src="script.js"></script>
 </body>
 </html>
+
