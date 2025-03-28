@@ -1,54 +1,40 @@
-// Lade die gespeicherte Umfrage beim Start
-window.onload = function() {
-    if (window.location.pathname.includes("admin.html")) {
-        return;
-    }
-    
-    let frage = localStorage.getItem("frage") || "Was ist deine Lieblingsfarbe?";
-    let option1 = localStorage.getItem("option1") || "Blau";
-    let option2 = localStorage.getItem("option2") || "Rot";
-
-    document.getElementById("frage").innerText = frage;
-
-    let antwortDiv = document.getElementById("antworten");
-    antwortDiv.innerHTML = `
-        <input type="radio" name="umfrage" value="1"> ${option1} <br>
-        <input type="radio" name="umfrage" value="2"> ${option2} <br>
-    `;
-};
-
-// Speichert die Antwort des Users
-function speichereAntwort() {
-    let antwort = document.querySelector('input[name="umfrage"]:checked');
-    if (antwort) {
-        document.getElementById("ergebnis").innerText = "Danke für deine Stimme!";
-    } else {
-        alert("Bitte wähle eine Option aus!");
-    }
-}
-
-// Admin-Login prüfen
-function checkLogin() {
-    let code = document.getElementById("code").value;
+// Überprüft den Admin-Code und zeigt den Admin-Bereich an
+function checkAdminLogin() {
+    const code = document.getElementById("adminCode").value;
     if (code === "123") {
         document.getElementById("adminPanel").style.display = "block";
+        document.getElementById("adminLogin").style.display = "none";
     } else {
         alert("Falscher Code!");
     }
 }
 
-// Neue Umfrage speichern
-function speichereUmfrage() {
-    let frage = document.getElementById("neueFrage").value;
-    let option1 = document.getElementById("option1").value;
-    let option2 = document.getElementById("option2").value;
+// Funktion zum Aktualisieren des Gerichts in der Benutzeransicht
+function updateGericht(tag) {
+    const inputElement = document.getElementById("essen" + tag + "Input");
+    const gericht = inputElement.value;
 
-    if (frage && option1 && option2) {
-        localStorage.setItem("frage", frage);
-        localStorage.setItem("option1", option1);
-        localStorage.setItem("option2", option2);
-        alert("Neue Umfrage gespeichert!");
-    } else {
-        alert("Bitte fülle alle Felder aus!");
-    }
+    // Aktuelle Auswahl in der Benutzeransicht aktualisieren
+    document.getElementById("essen" + tag + "User").innerText = gericht;
+
+    // Wenn du auch die Auswahl speichern möchtest, kannst du localStorage verwenden:
+    localStorage.setItem(tag, gericht);
 }
+
+// Funktion, die beim Laden die gespeicherten Gerichte anzeigt
+function loadGerichte() {
+    const tage = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"];
+    tage.forEach(tag => {
+        const gespeichertesGericht = localStorage.getItem(tag);
+        if (gespeichertesGericht) {
+            document.getElementById("essen" + tag + "User").innerText = gespeichertesGericht;
+            document.getElementById("essen" + tag + "Input").value = gespeichertesGericht;
+        }
+    });
+}
+
+// Lädt die gespeicherten Gerichte beim Start der Seite
+window.onload = function() {
+    loadGerichte();
+}
+
