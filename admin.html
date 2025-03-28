@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin-Bereich</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Admin Login</h1>
+
+    <input type="password" id="code" placeholder="Admin-Code eingeben">
+    <button onclick="checkLogin()">Login</button>
+
+    <div id="adminPanel" style="display:none;">
+        <h2>Neue Umfrage erstellen</h2>
+        <input type="text" id="neueFrage" placeholder="Neue Frage eingeben">
+        <input type="text" id="option1" placeholder="Option 1">
+        <input type="text" id="option2" placeholder="Option 2">
+        <button onclick="speichereUmfrage()">Speichern</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
