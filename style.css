@@ -1,23 +1,57 @@
+/* Allgemeine Styles */
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    margin: 50px;
+    margin: 20px;
     background-color: #f4f4f4;
 }
 
-input, button {
-    margin: 10px;
-    padding: 10px;
-    font-size: 16px;
+h1 {
+    font-size: 2em;
 }
 
-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
+/* Admin-Bereich */
+#adminPanel {
+    margin-top: 20px;
+    background-color: #e0e0e0;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#adminLogin {
+    margin: 20px auto;
+}
+
+#adminLogin input {
+    padding: 5px;
+    font-size: 1em;
+    margin-right: 10px;
+}
+
+#adminLogin button {
+    padding: 5px 10px;
+    font-size: 1em;
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #0056b3;
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ccc;
+}
+
+input {
+    padding: 5px;
+    font-size: 1em;
+}
+
+button {
+    padding: 5px 10px;
+    font-size: 1em;
+    cursor: pointer;
 }
